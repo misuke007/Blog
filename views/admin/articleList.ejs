@@ -1,0 +1,49 @@
+<%if(success != '') { %>
+    <div class="alert alert-success"><%=success%></div>
+<% } %>
+
+<%if(error != '') { %>
+    <div class="alert alert-danger"><%=error%></div>
+<% } %>
+
+<%if(newPost){ %>
+
+    <span class = "userId" id="<%=user.id%>"></span>
+
+<%} else{ %>
+
+    <h1> tsy OK</h1>
+
+<% } %>        
+
+<form action="" method="POST">
+
+    <input type="search" name="searchArticle">
+    <select name="CategorieId"  class="searchSelectCat displayNone">
+
+        <option value="" selected>Choisir une catégorie</option>
+      
+        <%for(item of dataCategory) { %>
+            <option value="<%=item.id%>"><%=item.nom%></option>
+        <% } %>
+        
+
+    </select>
+    <button type="submit">Search</button>
+    <a href="#" class="searchByCat">Recherchez par catégorie</a>
+
+</form>
+
+<table class="table">
+    <%for(item of data) { %>
+        <tr>
+            <td>
+                <%=item.titre%><br>
+                Categorie : <%=item.Categorie.nom%>
+            </td>
+            <td><a href="/user/show_article/<%=item.id%>">Voir</a></td>
+            <td><a href="/user/update_article/<%=item.id%>">Modifier</a></td>
+            <td><a href="/user/delete_article/<%=item.id%>">Supprimer</a></td>
+        </tr>
+    <% } %>    
+</table>

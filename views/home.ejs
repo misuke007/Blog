@@ -1,0 +1,211 @@
+<div class="banner">
+  <div class="banner-transparent">
+    <h6>Mi-<span class="other-color">Blog</span></h6>
+    <div class="textBox">
+      <h1>Chaque post est un voyage. Explorez le monde à travers des articles détaillés </h1>
+    </div>
+  </div>
+</div>
+
+<div class="colo-md-12 navbar">
+
+
+  <div class="modal_notification dis-none col-md-4">
+
+  </div>
+
+
+  <form action="/searchArticle" method="POST">
+
+    <ul class="menu1">
+
+      <%if(user) { %>
+
+        <li class="profilName">
+          <div class="p-profil" style="background-image: url(/photo/<%=dataUser.photo%>);"></div>
+          <%=user.nom%> <i class="fa  fa-angle-down ml-2"></i>
+            <div class="menuProfil dis-none"><a href="#"><i class="fa fa-pencil-square"></i><br> ADMIN</a><br><br><a
+                href="#"><i class="fa  fa-sign-out"></i> Deconnexion</a></div>
+        </li>
+        <li><a href="/home"><i class="fa fa-home"></i> Accueil</a></li>
+        <li><a href="#" class="notification" id="<%=user.id%>"><i class="fa  fa-bell">
+              <div class='nbr_notif'>
+                <%=notif_non_lu.length%>
+              </div>
+            </i> Notification</a></li>
+        <li>
+          <select name="CategorieId" id="">
+
+            <option value="" selected>Choisir une catégorie</option>
+
+            <%for(item of dataCategorie) { %>
+
+              <option value="<%=item.id%>">
+                <%=item.nom%>
+              </option>
+
+              <% } %>
+
+          </select>
+        </li>
+
+        <li><input type="search" name="searchArticle" placeholder="Recherche"><button type="submit"><i
+              class="fa fa-search"></i></button></li>
+
+
+        <% }else{ %>
+          <li><a href="/home"><i class="fa fa-home"></i> Accueil</a></li>
+          <li><a href="/user/login"><i class="fa  fa-link"></i> Se connecter</a></li>
+          <li><a href="/user/register"><i class="fa  fa-save"></i> S'inscrire</a></li>
+          <li>
+            <select name="CategorieId" id="">
+
+              <option value="" selected>Choisir une catégorie</option>
+
+              <%for(item of dataCategorie) { %>
+
+                <option value="<%=item.id%>">
+                  <%=item.nom%>
+                </option>
+
+                <% } %>
+
+            </select>
+          </li>
+
+          <li><input type="search" name="searchArticle" placeholder="Recherche"><button type="submit"><i
+                class="fa fa-search"></i></button></li>
+
+          <% } %>
+
+
+    </ul>
+
+  </form>
+
+</div>
+
+<div class="row">
+
+
+  <div class="col-md-6 mt-3">
+
+    <form action="/listByCategory_date" method="POST" class="formTri">
+
+      <%if(error!= '' ) { %>
+        <div class="alert alert-danger"><%=error%></div>
+      <% } %>
+
+      <%if(success!= '' ) { %>
+        <div class="alert alert-success"><%=success%></div>
+      <% } %>
+      
+      <label for="cat">Trier par : </label>
+      <select class="" name="CategorieId" id="cat">
+
+        <option value="" selected>Catégorie</option>
+
+        <%for(item of dataCategorie) { %>
+
+          <option value="<%=item.id%>">
+            <%=item.nom%>
+          </option>
+
+          <% } %>
+
+      </select>
+
+      <select class="" name="dateValue" id="cat">
+
+        <option value="" selected>Date</option>
+        <option value="DESC">Date (du plus récent au plus ancien)</option>
+        <option value="ASC">Date (du plus ancien au plus récent)</option>
+
+      </select>
+
+      <button type="submit">Appliquer</button>
+    </form>
+  </div>
+
+
+  <div class="col-md-6">
+
+  
+
+    <div class = "tagsBox ml-5 mt-4">
+    <h3>Recherche par #Tags <div class="tre"></div></h3>
+
+       <% for(item of dataTag) { %>
+
+          <a href="/article_list/tag/<%=item.id%>">#<%=item.name%></a>
+
+       <% } %>
+
+    </div>
+
+
+  </div>
+</div>
+
+
+
+
+
+<div class="container">
+
+  <div class="row mt-5">
+    <h3>Populaires en ce moment <div class="tre"></div></h3>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12 boxPopulary"></div>
+  </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+    <!-- <div class="container">
+
+      <div class="row mt-4">
+        <%for(item of data) { %>
+
+          <a href="/voir_article/<%=item.id%>">
+
+            <div class="card ml-4 mb-3" style="width: 18rem;">
+              <img src="/photo/<%=item.image%>" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">
+                  <%=item.titre%>
+                </h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                  card's content.</p>
+
+                <a href="#"><i class="fa fa-heart-o"></i>
+                  <%=item.Likes.length%>
+                </a>
+                <a href="#"> <i class="fa fa-commenting-o"></i>
+                  <%=item.Commentaires.length%>Commentaire
+                </a>
+
+
+              </div>
+            </div>
+          </a>
+
+          <% } %>
+      </div>
+
+    </div>  

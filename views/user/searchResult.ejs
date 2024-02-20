@@ -1,0 +1,40 @@
+<%if(dataResult.length != 0) { %>
+    <%if(dataResult.length > 1 ) { %>
+        <div class="alert alert-success"> Vous avez <%=dataResult.length%> résultats</div>
+    <% } else{ %>
+        <div class="alert alert-success"> Vous avez <%=dataResult.length%> résultat</div>
+    <% } %>        
+    
+<% } else { %>
+
+<div class="alert alert-danger"> Vous avez <%=dataResult.length%> résultat</div>
+
+<% } %> 
+       
+<div class="container">
+
+  <div class="row mt-4">
+    <%for(item of dataResult) { %>
+
+      <a href="/voir_article/<%=item.id%>">
+
+        <div class="card ml-4 mb-3" style="width: 18rem;">
+          <img src="/photo/<%=item.image%>" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title"><%=item.titre%></h5>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            
+            <a href="#"><i class="fa fa-heart-o"></i></a>
+            <a href="#"> <i class="fa fa-commenting-o"></i> Commentaire</a>
+           
+  
+          </div>
+        </div>
+      </a>
+    
+    <% } %> 
+  </div>
+
+</div>
+
+ 

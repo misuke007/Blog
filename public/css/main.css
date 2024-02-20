@@ -1,0 +1,375 @@
+body{
+
+  margin: 0;
+  padding: 0;
+
+}
+
+
+.banner {
+
+  height: 320px;
+  background-image: url('../img/workspace-arrangement-with-clock.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+
+}
+
+
+
+.banner-transparent {
+  height: 320px;
+  background-color: #00032AC9;
+  margin: 0;
+}
+
+
+.banner-transparent h6 {
+  font-size: 30px;
+  color: white;
+  font-weight: 800;
+  float: left;
+  margin-top: 20px;
+  margin-left: 31px;
+}
+
+.banner-transparent h6 .other-color {
+ color: #D3BAC5;
+}
+
+
+.textBox {
+  width: 531px;
+  color: white;
+  margin: auto;
+  position: relative;
+  left: 210px;
+  top: 75px;
+}
+
+.textBox h1 {
+  font-weight: 900;
+  font-size: 40px;
+  color: #FFFFFFF2;
+}
+
+
+
+.navbar{
+
+  height: 60px;
+  background-color: #00032A;
+  position: relative;
+
+}
+
+.navbar .menu1{
+
+  margin: 0;
+  position: relative;
+}
+
+.navbar .menu1 li {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 50px;
+}
+
+.navbar .menu1 .p-profil {
+  width: 50px;
+  height: 50px;
+  background-color: #D3BAC5;
+  position: absolute;
+  left: 6px;
+  top: -10px;
+  border-radius: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+
+.navbar .menu1 .fa-angle-down{
+
+  cursor: pointer;
+
+}
+
+
+.navbar .menu1 .profilName {
+  color: #ffffff38;
+}
+
+
+.navbar .menu1 li a {
+  text-decoration: none;
+  color: #A0A3CAFF;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.navbar .menu1 .menuProfil {
+  width: 160px;
+  background-color: #143887;
+  position: absolute;
+  top: 32px;
+  border-radius: 8px;
+  text-align: center;
+  padding: 21px;
+  z-index: 1;
+}
+
+
+
+.tagsBox {
+  width: 520px;
+  height: 140px;
+  background-color: #00032AC9;
+  box-shadow: 0px 8px 5px #00032AC9;
+  overflow: hidden;
+  padding: 15px;
+  overflow-y: auto;
+}
+
+.tagsBox h3 {
+
+  color: white;
+
+}
+
+.tagsBox a {
+  text-decoration: none;
+  background-color: #D3BAC5;
+  color: black;
+  margin-left: 13px;
+  padding: 0px 10px;
+  position: relative;
+  top: 2px;
+  border-radius: 4px;
+}
+
+.tre {
+  height: 6px;
+  width: 71px;
+  background-color: #00032A;
+  margin-top: 6px;
+  margin-bottom: 20px;
+}
+
+.boxPopulary{
+
+  height: 300px;
+  background-color: red;
+}
+
+
+.navbar .menu1 select {
+  background-color: #A0A3CAFF;
+  border: none;
+  border-radius: 6px;
+  padding: 5px;
+}
+
+
+
+.navbar .menu1 input {
+  width: 290px;
+  border: none;
+  border-radius: 7px;
+  outline: none;
+  padding: 5px;
+    padding-left: 5px;
+  margin-left: 25px;
+  color: grey;
+  padding-left: 30px;
+}
+
+
+.navbar .menu1 button {
+  padding: 5px 16px;
+  border: none;
+  margin-left: -13px;
+  background-color: #D3BAC5;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
+
+}
+
+.navbar .menu1 .menuProfil a {
+  text-decoration: none;
+  color: #D3BAC5;
+  font-weight: bold;
+}
+
+.dis-none{
+
+  display: none;
+}
+
+.dis-block{
+
+  display: block;
+}
+
+.commentaire_pdp {
+  width: 55px;
+  height: 51px;
+  background-color: grey;
+  border-radius: 70px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.box_msg {
+  width: 480px;
+  background-color: #e6e6e6;
+  border-radius: 7px;
+  margin-left: 8px;
+  padding: 15px;
+}
+
+.coms_userName {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+.heure_pub {
+  margin-left: 68px;
+}
+
+
+.user_like_list {
+  height: 200px;
+  position: absolute;
+  background-color: #f7f5f5;
+  border: 1px solid #e8e2e2;
+  border-radius: 12px;
+}
+
+
+.profil_like_list {
+  width: 45px;
+  height: 45px;
+  border-radius: 100px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.profil_name{
+  margin-top: 14px;
+  margin-left: 10px;
+}
+
+
+.notification{
+
+cursor: pointer;
+
+}
+
+
+.modal_notification {
+  height: 288px;
+  background-color: #fff;
+  position: relative;
+  left: 29%;
+  top: 58px;
+  border: 1px solid #ece4e4;
+  box-shadow: 12px 10px 12px -15px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1;
+}
+
+.formTri label{
+
+
+    margin-left: 15px;
+    margin-top: 25px;
+  
+}
+
+.formTri select {
+  background-color: #00032AC9;
+  border: none;
+  border-radius: 6px;
+  padding: 5px;
+  color: white;
+}
+
+
+.formTri button {
+  padding: 5px 16px;
+  border: none;
+  margin-left: 13px;
+  background-color: #00032A;
+  color: white;
+}
+
+
+
+.notif_lu{
+  height: 70px;
+  background-color: #fff;
+  padding: 4px 25px;
+ 
+
+
+}
+
+
+.notif_non_lu {
+  height: 70px;
+  background-color: #e8e8e8;
+  padding: 4px 25px;
+}
+
+
+
+.notifLabel {
+  margin-top: 17px;
+  margin-left: 10px;
+  font-size: 15px;
+  color: #686868;
+}
+
+
+
+
+
+.nbr_notif {
+  background-color: red;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+  font-size: 11px;
+  border-radius: 3px;
+  padding: 2px 4px;
+  position: absolute;
+  top: -17px;
+  left: 2px;
+}
+
+.fa-bell{
+
+  position: relative;
+}
+
+
+
+.userPdp {
+  width: 45px;
+  height: 45px;
+  background-color: #D3BAC5;
+  border-radius: 88px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

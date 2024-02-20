@@ -1,0 +1,42 @@
+
+
+<%if(error != '') { %>
+  <div class = "alert alert-danger"><%=error%></div>
+<% } %>  
+
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+  <input type="hidden" name="id" value="<%=ArticleData.id%>">
+    <select name="CategorieId" id="">
+        <%for(item of data) { %>
+            <%if(item.id == ArticleData.CategorieId) { %>
+                <option value="<%=item.id%>" selected ><%=item.nom%></option>
+            <% }else{ %>
+                <option value="<%=item.id%>" ><%=item.nom%></option>
+            <% } %>        
+        <% } %>    
+    </select><br>
+
+    <input type="text" name="titre" value="<%=ArticleData.titre%>"><br>
+
+    <textarea id="editor" name="contenu"><%=ArticleData.contenu%></textarea>
+    <textarea name="tags" id="" cols="30" rows="10"><%=tagsList%></textarea>
+
+  <script>
+
+    ClassicEditor
+      .create(document.querySelector('#editor'))
+      .then(editor => {
+        console.log('Editeur CKEditor initialisé');
+      })
+      .catch(error => {
+        console.error(error);
+      });
+
+  </script><br>
+
+  <input type="file" name="photo"><br>
+  <button type="submit">Ajouter</button>
+</form>

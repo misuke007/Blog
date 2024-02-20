@@ -1,0 +1,149 @@
+
+ <%-include('navbar')%>
+<h3><%=data.titre%></h3><br>
+
+<%for(item of dataArticleTag) { %>
+
+    <a href="/article_list/tag/<%=item.Tag.id%>"><%=item.Tag.name%></a>
+<% } %>    
+<br>
+<%if(state) { %>
+  <span class="comsData" data-userid = "<%=UtilisateurId%>" data-articleid="<%=ArticleId%>"></span>
+<% } %> 
+
+<%if(user) { %>
+
+    <%if(data.UtilisateurId == user.id){ %>
+        <span>Publié par vous</span>
+    <%} else {%>
+        <span>Publié par <a href="/profil_utilisateur/<%=data.Utilisateur.id%>"><%=data.Utilisateur.nom%> <%=data.Utilisateur.prenom%></a></span>
+    <% } %>  
+    
+<% }else{%>
+    <span>Publié par <a href="/profil_utilisateur/<%=data.Utilisateur.id%>"><%=data.Utilisateur.nom%> <%=data.Utilisateur.prenom%></a></span>
+<% } %>        
+
+      
+
+<p><%-data.contenu%></p>
+
+<div class="user_like_list dis-none col-lg-4 offset-lg-4">
+    <h6>Personnes ayant aimé</h6>
+</div>
+
+<%if(user) { %>
+
+    <%if(liked) { %>
+
+        <a href="#" class="like dis-none" onclick="addLike('<%=user.id%>' , '<%=data.id%>')"><i class="fa fa-heart-o"></i></a><span data-ArticleId = "<%=data.id%>" class="decrement_like dis-none"><%=allLike.length%> j'aime</span>
+        <a href="#" class="dislike " onclick="removeLike('<%=user.id%>' , '<%=data.id%>')"><i class="fa fa-heart"></i></a><span data-ArticleId = "<%=data.id%>" class="increment_like"><%=allLike.length%> j'aime</span>
+        <a href="#" class="commentaire"> <i class="fa fa-commenting-o"></i> <span><%=data.Commentaires.length%></span> Commentaire</a>
+
+        <%if(data.Commentaires.length != 0) { %>
+
+            <%for(item of data.Commentaires) { %>
+
+                <div class="d-flex">
+            
+                    <div class="commentaire_pdp" style="background-image: url('/photo/<%=item.Utilisateur.photo%>');"></div>
+                    <div class="box_msg">
+                        <h5 class="coms_userName"><%=item.Utilisateur.nom%> <%=item.Utilisateur.prenom%></h5>
+                        <p><%=item.contenu%></p>
+                    </div>
+                </div>
+                <a href="#" class="heure_pub"><%=item.formattedDate%></a>
+                
+
+                <%if('liked' in item) { %>
+
+                <a href="#"><i class="fa fa-heart-o dis-none like_coms" data-CommentaireId = "<%=item.id%>"  data-UserId = "<%=user.id%>" , data-articleid ="<%=data.id%>"></i></a><span class="dis-none increment_like_coms" data-CommentaireId = "<%=item.id%>" ><%=item.Likes.length%> j'aime</span>
+                <a href="#"><i class="fa fa-heart dislike_coms" data-CommentaireId = "<%=item.id%>"  data-UserId = "<%=user.id%>" , data-articleid = "<%=data.id%>"></i></a><span class="decrement_like_coms" data-CommentaireId = "<%=item.id%>" ><%=item.Likes.length%> j'aime</span> 
+
+                <% }else { %>
+
+                <a href="#"><i class="fa fa-heart-o like_coms" data-CommentaireId = "<%=item.id%>"  data-UserId = "<%=user.id%>" , data-articleid ="<%=data.id%>"></i></a><span class="increment_like_coms" data-CommentaireId = "<%=item.id%>" ><%=item.Likes.length%> j'aime</span>
+                <a href="#"><i class="fa fa-heart dis-none dislike_coms" data-CommentaireId = "<%=item.id%>"  data-UserId = "<%=user.id%>" , data-articleid ="<%=data.id%>"></i></a><span class="decrement_like_coms dis-none" data-CommentaireId = "<%=item.id%>" ><%=item.Likes.length%> j'aime</span>
+
+                <% } %>          
+               
+            <% } %>    
+        <% } %>    
+
+
+    <% }else{ %>
+
+    <a href="#" class="like" onclick="addLike('<%=user.id%>' , '<%=data.id%>')"><i class="fa fa-heart-o"></i></a><span data-ArticleId = "<%=data.id%>" class="decrement_like"><%=allLike.length%> j'aime</span>
+    <a href="#" class="dislike dis-none" onclick="removeLike('<%=user.id%>' , '<%=data.id%>')"><i class="fa fa-heart"></i></a><span data-ArticleId = "<%=data.id%>" class="increment_like dis-none"><%=allLike.length%> j'aime</span>
+    <a href="#" class="commentaire"> <i class="fa fa-commenting-o"></i> <span><%=data.Commentaires.length%></span> Commentaire</a>
+
+    <%if(data.Commentaires.length != 0) { %>
+
+        <%for(item of data.Commentaires) { %>
+
+            <div class="d-flex">
+        
+                <div class="commentaire_pdp" style="background-image: url('/photo/<%=item.Utilisateur.photo%>');"></div>
+                <div class="box_msg">
+                    <h5 class="coms_userName"><%=item.Utilisateur.nom%> <%=item.Utilisateur.prenom%></h5>
+                    <p><%=item.contenu%></p>
+                </div>
+            </div>
+            <a href="#" class="heure_pub"><%=item.formattedDate%></a>
+
+            <%if('liked' in item) { %>
+
+                <a href="#"><i class="fa fa-heart-o dis-none like_coms" data-CommentaireId = "<%=item.id%>"  data-UserId = "<%=user.id%>" , data-articleid ="<%=data.id%>"><span class="increment_like_coms" data-CommentaireId = "<%=item.id%>" ><%=item.Likes.length%></span></i></a>
+                <a href="#"><i class="fa fa-heart dislike_coms"  data-CommentaireId = "<%=item.id%>"  data-UserId = "<%=user.id%>" , data-articleid ="<%=data.id%>"><span class="decrement_like_coms" data-CommentaireId = "<%=item.id%>" ><%=item.Likes.length%></span></i></a> 
+
+                <% }else { %>
+
+                <a href="#"><i class="fa fa-heart-o like_coms" data-CommentaireId = "<%=item.id%>"  data-UserId = "<%=user.id%>" , data-articleid ="<%=data.id%>"><span class="increment_like_coms" data-CommentaireId = "<%=item.id%>" ><%=item.Likes.length%></span></i></a>
+                <a href="#"><i class="fa fa-heart dis-none dislike_coms" data-CommentaireId = "<%=item.id%>"  data-UserId = "<%=user.id%>" , data-articleid ="<%=data.id%>"><span class="decrement_like_coms" data-CommentaireId = "<%=item.id%>" ><%=item.Likes.length%></span></i></a>
+                 
+                <% } %> 
+        <% } %>    
+    <% } %>    
+  
+
+    <% } %>        
+
+<% } else{ %>
+
+    <a href="#"><i class="fa fa-heart-o"></i> <%=allLike.length%></a>
+    <a href="#" class="commentaire"> <i class="fa fa-commenting-o"></i> <span><%=data.Commentaires.length%></span> Commentaire</a>
+
+    <%if(data.Commentaires.length != 0) { %>
+
+        <%for(item of data.Commentaires) { %>
+
+            <div class="d-flex">
+        
+                <div class="commentaire_pdp" style="background-image: url('/photo/<%=item.Utilisateur.photo%>');"></div>
+                <div class="box_msg">
+                    <h5 class="coms_userName"><%=item.Utilisateur.nom%> <%=item.Utilisateur.prenom%></h5>
+                    <p><%=item.contenu%></p>
+                </div>
+            </div>
+            <a href="#" class="heure_pub"><%=item.formattedDate%></a>
+            
+
+        <% } %>    
+    <% } %>    
+  
+
+<% } %>
+
+
+
+<%if(user) { %>
+    
+<form action="" method="POST">
+
+    <input type="hidden" name="UtilisateurId" value="<%=user.id%>">
+    <input type="hidden" name="ArticleId" value="<%=data.id%>">
+    <textarea name="contenu" id="" cols="20" rows="2"></textarea><br>
+    <button type="submit">Commnenter</button>    
+</form>
+
+<% } %>
+

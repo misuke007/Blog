@@ -1,0 +1,15 @@
+<h3><%=data.nom%> <%=data.prenom%></h3>
+
+<%if(user) { %>
+
+
+    <button class ='suivre' data-userid ='<%=data.id%>' data-followerid='<%=user.id%>'>Suivre</button>
+    <button class="desuivre"  data-userid ='<%=data.id%>' data-followerid='<%=user.id%>'>Ne plus suivre</button>
+<% } %>
+
+
+
+
+
+
+

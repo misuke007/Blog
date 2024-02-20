@@ -1,0 +1,27 @@
+
+<%if(dataResult.length != 0) { %>
+        <%if(dataResult.length > 1 ) { %>
+            <div class="alert alert-success"> Vous avez <%=dataResult.length%> résultats</div>
+        <% } else{ %>
+            <div class="alert alert-success"> Vous avez <%=dataResult.length%> résultat</div>
+        <% } %>        
+        
+<% } else { %>
+
+    <div class="alert alert-danger"> Vous avez <%=dataResult.length%> résultat</div>
+    
+<% } %>        
+
+<table class="table">
+    <%for(item of dataResult) { %>
+        <tr>
+            <td>
+                <%=item.titre%><br>
+                Categorie : <%=item.Categorie.nom%>
+            </td>
+            <td><a href="/user/show_article/<%=item.id%>">Voir</a></td>
+            <td><a href="/user/update_article/<%=item.id%>">Modifier</a></td>
+            <td><a href="/user/delete_article/<%=item.id%>">Supprimer</a></td>
+        </tr>
+    <% } %>    
+</table>

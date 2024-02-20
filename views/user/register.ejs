@@ -1,0 +1,16 @@
+<%if(error != '') { %>
+    <div class="alert alert-danger"><%=error%></div>
+<% } %>    
+
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+    <input type="text" name="nom"><br>
+    <input type="text" name="prenom"><br>
+    <input type="email" name="email"><br>
+    <input type="password" name="password"><br>
+    <input type="password" name="confirmPass"><br>
+    <input type="file" name="photo"><br>
+    <button type="submit">register</button>
+    
+</form>

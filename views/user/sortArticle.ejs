@@ -1,0 +1,61 @@
+<%-include('navbar')%>
+
+<form action="" method="POST">
+    <label for="cat">Trier par : </label>
+    <select class="form-control form-control-sm" name="CategorieId" id="cat">
+  
+      <option value="" selected>Catégorie</option>
+      
+      <%for(item of dataCategorie) { %>
+  
+        <option value="<%=item.id%>">
+          <%=item.nom%>
+        </option>
+  
+        <% } %>
+  
+    </select>
+  
+    <select class="form-control form-control-sm" name="dateValue" id="cat">
+  
+      <option value="" selected>Date</option>
+      <option value="DESC">Date (du plus récent au plus ancien)</option>
+      <option value="ASC">Date (du plus ancien au plus récent)</option>
+      
+    </select>
+  
+    <button type="submit">Appliquer</button>
+  </form>
+  
+      <div class="container">
+  
+        <div class="row mt-4">
+          <%for(item of data) { %>
+  
+            <a href="/voir_article/<%=item.id%>">
+  
+              <div class="card ml-4 mb-3" style="width: 18rem;">
+                <img src="/photo/<%=item.image%>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    <%=item.titre%>
+                  </h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                    card's content.</p>
+  
+                  <a href="#"><i class="fa fa-heart-o"></i>
+                    <%=item.Likes.length%>
+                  </a>
+                  <a href="#"> <i class="fa fa-commenting-o"></i>
+                    <%=item.Commentaires.length%>Commentaire
+                  </a>
+  
+  
+                </div>
+              </div>
+            </a>
+  
+            <% } %>
+        </div>
+  
+      </div>
